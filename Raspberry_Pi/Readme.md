@@ -21,4 +21,4 @@ There are two step to process in Raspberrypi.
    >> sudo docker images
    >> sudo docker --env-file=.env consumer
    >> sudo docker ps
->   >    
+>   >    sudo docker ps
