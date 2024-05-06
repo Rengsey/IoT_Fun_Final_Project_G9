@@ -1,1 +1,1 @@
-This consumer is used to connect to mqtt broker(EMQX), and send data to influxdb
+This consumer is used to connect to mqtt broker(EMQX), write data to influxdb, and send data to data analysis model
