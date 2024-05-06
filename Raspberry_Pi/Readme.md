@@ -4,9 +4,9 @@ There are two step to process in Raspberrypi.
 2. Running Consumer on docker
 *****Teminal Command*****
 # I. Install docker:
-   >> curl -sSL https://get.docker.com | sh
-   >> sudo usermod -aG docker $USER
-   >> docker --version
+   |> curl -sSL https://get.docker.com | sh
+   |> sudo usermod -aG docker $USER
+   |> docker --version
 # II.  Install MQTT Broker (EQMX) and Run on docker, we will use port 1883 for MQTT Broker and 18083 for EMQX UI management:
    >> sudo docker run -p 1883:1883 -p 18083:18083 emqx
    >> Go to raspberrypi.local:18083, Username: admin, Password: public
