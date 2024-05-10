@@ -9,8 +9,8 @@
 #include <PubSubClient.h>
 #include <esp_sleep.h>    
 /*********************WiFi and MQTT Broker****************************/
-const char* ssid = "RTM340";
-const char* password = "123BB699";
+const char* ssid = "TP-LINK_E0BE";
+const char* password = "14061653";
 const char* mqtt_server = "192.168.1.4";
 const int mqtt_port = 1883;
 const char* mqtt_Client = "";//ClientID
@@ -38,8 +38,8 @@ QueueHandle_t Queue; //Define QueueHandle_t
 // Conversion factor for microseconds to seconds
 const long uS_TO_S_FACTOR = 1000000UL;
 // Sleep duration in seconds
-const int SLEEP_DURATION = 50;//50 seconds = 1mn
-
+const int SLEEP_DURATION = 55;//50 seconds = 1mn
+uint8_t counterRestart = 0;
 void setup() {
   Serial.begin(115200);
   //Set ESP32's CPU Frequency to 160MHz 
@@ -61,8 +61,12 @@ void setup() {
     WiFi.begin(ssid, password);
     Serial.print("Connecting to WiFi ");
     while (WiFi.status() != WL_CONNECTED) {
+      counterRestart++;
       delay(500);
       Serial.print(".");
+      if(counterRestart>20){
+        ESP.restart();
+      }
     }
     Serial.println("\nWiFi Connected");
     //connect client to MQTT Broker
@@ -128,8 +132,8 @@ void subspendAllTask(void *pvParameters) {
   while (1) {
     // Task code here
     Serial.println("All tasks will suspend in 1mn");
-    // Delay for 1mn|60*1000ms
-    vTaskDelay(65*1000 / portTICK_PERIOD_MS); 
+    // Delay for 5*1000ms
+    vTaskDelay(3*1000 / portTICK_PERIOD_MS); 
     // Suspend the task
     vTaskSuspend(sendTaskHandle);
     vTaskSuspend(receiveTaskHandle);
