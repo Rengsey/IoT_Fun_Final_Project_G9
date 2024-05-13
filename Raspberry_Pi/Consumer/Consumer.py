@@ -24,7 +24,7 @@ client = InfluxDBClient(
     token=str(os.environ.get('INFLUXDB_TOKEN')),
     org=os.environ.get('INFLUXDB_ORG')
 )
-write_api = client.write_api()
+write_api = client.write_api(write_options=ASYNCHRONOUS)
  
 # MQTT broker config
 MQTT_BROKER_URL = os.environ.get('MQTT_URL')
