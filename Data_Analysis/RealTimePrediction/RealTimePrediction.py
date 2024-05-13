@@ -14,10 +14,10 @@ from influxdb_client.client.write_api import ASYNCHRONOUS
 import json
 
 # Loading the trained SVM model and the column names used for the model input
-svm_model1 = joblib.load('svm_model.pkl')  # Load SVM model from file
-svm_columns1 = joblib.load("svm_model_columns.pkl")  # Load column names for the model input
-svm_model2 = joblib.load('svm_model.pkl')  # Load SVM model from file
-svm_columns2 = joblib.load("svm_model_columns.pkl")  # Load column names for the model input
+svm_model1 = joblib.load('Temperature_SVM.pkl')  # Load SVM model from file
+svm_columns1 = joblib.load("Temperature_LinearRegression.pkl")  # Load column names for the model input
+svm_model2 = joblib.load('Humidity_SVM.pkl')  # Load SVM model from file
+svm_columns2 = joblib.load("Humidity_LinearRegression.pkl")  # Load column names for the model input
 # Load environment variables from a ".env" file for configuration and security
 
 load_dotenv()
